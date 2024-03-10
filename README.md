@@ -1,4 +1,2 @@
-# OOP-Zak-Dominik
-
-Zak Dominik 1 rok
-Index: 131398
+# Zak Dominik 1st year
+### Index: 131398
