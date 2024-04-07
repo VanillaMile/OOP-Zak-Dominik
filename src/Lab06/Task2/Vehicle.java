@@ -19,22 +19,71 @@ public class Vehicle {
         this.mileage = mileage;
     }
 
-    Scanner scan = new Scanner(System.in);
+    private Scanner scan = new Scanner(System.in);
     public Vehicle(){
+        scan.useDelimiter("\n");
         brand = getString("Input brand: ");
         model = getString("Input Model: ");
+        body = getInt("Input Body number: ", -1);
+        scan.nextLine();
+        color = getString("Input Color: ");
+        productionYear = getInt("Input production year: ", 1600);
+        mileage = getDouble("Input Mileage: ", -1);
     }
-    private String getString(String text){
+    protected String getString(String text){
         System.out.print(text);
         return scan.nextLine();
     }
+    protected int getInt(String text, int minValue){
+        int input = 0;
+        while (true){
+            System.out.print(text);
+            input = scan.nextInt();
+            if(input>minValue) return input;
+            System.out.println("Invalid input, try again");
+        }
+    }
+    protected int getInt(String text, int minValue, int maxValue){
+        int input = 0;
+        while (true){
+            System.out.print(text);
+            input = scan.nextInt();
+            if(input > minValue && input < maxValue) return input;
+            System.out.println("Invalid input, try again");
+        }
+    }
+    protected double getDouble(String text, double minValue){
+        double input = 0;
+        while (true){
+            System.out.print(text);
+            input = scan.nextDouble();
+            if(input>minValue) return input;
+            System.out.println("Invalid input, try again");
+        }
+    }
+    protected double getDouble(String text, double minValue, double maxValue){
+        double input = 0;
+        while (true){
+            System.out.print(text);
+            input = scan.nextDouble();
+            if(input>minValue && input < maxValue) return input;
+            System.out.println("Invalid input, try again");
+        }
+    }
+
+    private String getBrand() {return brand;}
+    private String getModel() {return model;}
+    private int getBody() {return body;}
+    private String getColor() {return color;}
+    private int getProductionYear() {return productionYear;}
+    private double getMileage() {return mileage;}
 
     public void view(){
-        System.out.println("Brand: " + brand);
-        System.out.println("Model: " + model);
-        System.out.println("Body: " + body);
-        System.out.println("Color: " + color);
-        System.out.println("Production Year: " + productionYear);
-        System.out.println("Mileage: " + mileage);
+        System.out.println("Brand: " + getBrand());
+        System.out.println("Model: " + getModel());
+        System.out.println("Body: " + getBody());
+        System.out.println("Color: " + getColor());
+        System.out.println("Production Year: " + getProductionYear());
+        System.out.println("Mileage: " + getMileage());
     }
 }
